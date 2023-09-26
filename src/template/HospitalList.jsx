@@ -1,7 +1,11 @@
 import React from 'react';
 import styled from 'styled-components';
+<<<<<<< HEAD
 import Chip from '../components/Chip';
 import Listitem from '../components/Listitem';
+=======
+import MUITest from '../components/MUITest';
+>>>>>>> a44d58cd42d2ea83cafd7db11138a01ea67f2dd1
 
 const chips = [
   {
