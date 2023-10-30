@@ -1,4 +1,4 @@
-import Axios from 'axios';
+import axios from 'axios';
 import qs from 'qs';
 
 const HttpMethod = {
@@ -10,7 +10,7 @@ const HttpMethod = {
 
 const requestForEntity = async (method, url, params, data, arrayNoBrackets) => {
   try {
-    const axiosResult = await Axios.request({
+    const axiosResult = await axios.request({
       url,
       method,
       params,
