@@ -1,8 +1,7 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import { Button } from '@mui/material';
 import Colors from '../style/Colors';
-import Modalpop from './Modalpop';
 
 const MyButton = styled(Button)`
   && {
@@ -49,8 +48,10 @@ const Textbox = styled.div`
   .text1 {
     color: ${Colors.BLACK40},
       font-family: 'Noto Sans',
-      font-size: 11px,
-      font-weight: 400
+      font-size: 14px,
+      font-style: normal,
+      font-weight: 700,
+      line-height: normal,
   }
 `;
 const Rightbox = styled.div`
@@ -63,13 +64,7 @@ const Rightbox = styled.div`
   border-radius: 0px;
 `;
 
-function Listitem({ hos, title, date, location, people }) {
-  const [isPressed, setIsPressed] = useState(false);
-
-  const handleButtonClick = () => {
-    setIsPressed(!isPressed);
-  };
-
+function ReservationItem({ hos, time, symptom, memo, people, onclick }) {
   const styles = {
     text1: {
       color: 'rgba(0, 0, 0, 0.40)',
@@ -80,15 +75,15 @@ function Listitem({ hos, title, date, location, people }) {
       lineHeight: 'normal',
     },
     text2: {
-      color: '#000',
+      color: 'rgba(0, 0, 0, 0.80)',
       fontFamily: 'Noto Sans',
-      fontSize: 14,
+      fontSize: 11,
       fontStyle: 'normal',
-      fontWeight: 700,
+      fontWeight: 500,
       lineHeight: 'normal',
     },
     text3: {
-      color: 'rgba(0, 0, 0, 0.40)',
+      color: 'rgba(0, 0, 0, 0.80)',
       fontFamily: 'Noto Sans',
       fontSize: 11,
       fontWeight: 500,
@@ -96,7 +91,7 @@ function Listitem({ hos, title, date, location, people }) {
       lineHeight: 'normal',
     },
     text4: {
-      color: '#FFA800',
+      color: 'rgba(0, 0, 0, 0.80)',
       fontFamily: 'Noto Sans',
       fontSize: 11,
       fontStyle: 'normal',
@@ -105,7 +100,7 @@ function Listitem({ hos, title, date, location, people }) {
     },
     text5: {
       color: 'rgba(0, 0, 0, 0.60)',
-      fontFamily: 'Inter',
+      fontFamily: 'Noto Sans',
       fontSize: 11,
       fontStyle: 'normal',
       fontWeight: 400,
@@ -125,29 +120,21 @@ function Listitem({ hos, title, date, location, people }) {
     <Container>
       <Textbox>
         <div className="text1">{hos}</div>
-        <div style={styles.text2}>{title}</div>
+        <div style={styles.text2}>{`${time.getHours()}시 ${time.getMinutes()}분에 접수했어요~!`}</div>
         <div>
-          <p style={styles.text4}>{date}</p> <p style={styles.text3}>{location}</p>
+          <p style={styles.text4}>{symptom}</p> <p style={styles.text3}>{memo}</p>
         </div>
       </Textbox>
       <Rightbox>
         <div>
-          <p style={styles.text5}>대기자 수:</p> <p style={styles.text6}>{people}</p>
+          <p style={styles.text5}>내 앞에</p> <p style={styles.text6}>{people}명</p>
         </div>
-        <MyButton type="button" onClick={handleButtonClick}>
-          접수하기
+        <MyButton type="button" onClick={onclick}>
+          취소하기
         </MyButton>
-        {isPressed && (
-          <Modalpop
-            hospital={title}
-            onclose={() => {
-              setIsPressed(false);
-            }}
-          />
-        )}
       </Rightbox>
     </Container>
   );
 }
 
-export default Listitem;
+export default ReservationItem;

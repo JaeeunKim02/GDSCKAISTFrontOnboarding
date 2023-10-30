@@ -1,11 +1,7 @@
 import React from 'react';
-import styled from 'styled-components';
-<<<<<<< HEAD
 import Chip from '../components/Chip';
 import Listitem from '../components/Listitem';
-=======
-import MUITest from '../components/MUITest';
->>>>>>> a44d58cd42d2ea83cafd7db11138a01ea67f2dd1
+import Colors from '../style/Colors';
 
 const chips = [
   {
@@ -47,7 +43,7 @@ function HospitalList() {
       gap: '16px',
       flex: '1 0 0',
       borderRadius: 'var(--1, 8px)',
-      background: 'var(--WHITE100, #FFF)',
+      background: Colors.WHITE100,
     },
     frame4: {
       display: 'flex',
@@ -64,13 +60,9 @@ function HospitalList() {
           return <Chip title={chip.title} />;
         })}
       </div>
-      <div>
-        {items.map(item => {
-          return (
-            <Listitem hos={item.hos} title={item.title} date={item.date} location={item.loc} people={item.people} />
-          );
-        })}
-      </div>
+      {items.map(item => {
+        return <Listitem hos={item.hos} title={item.title} date={item.date} location={item.loc} people={item.people} />;
+      })}
     </div>
   );
 }

@@ -14,6 +14,12 @@ function Chip({ title }) {
     background: isPressed ? 'var(--POINT_DEEP, #FFA800)' : 'var(--WHITE100, #FFF)',
     border: isPressed ? 'none' : '1px solid var(--POINT_MEDIUM, #FFD687)',
     cursor: 'pointer',
+    color: '#FFA800',
+    fontFamily: 'Noto Sans',
+    fontSize: 12,
+    fontStyle: 'normal',
+    fontWeight: 500,
+    lineHeight: 'normal',
   };
 
   const handleButtonClick = () => {
